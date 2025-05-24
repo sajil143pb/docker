@@ -1,5 +1,9 @@
-FROM ubuntu
-RUN apt-get update && apt-get install -y && golang-go
+#Base image for building the Go application
+FROM ubuntu AS build
+RUN apt-get update && apt-get install -y golang-go
 ENV GO111MODULE=off
 COPY . .
+# Build the Go application
+FROM scratch 
+COPY --from=build /app /app
 ENTRYPOINT ["/app"]
