@@ -3,7 +3,7 @@ FROM ubuntu AS build
 RUN apt-get update && apt-get install -y golang-go
 ENV GO111MODULE=off
 COPY . .
-# Build the Go application
+# Build the Go application 
 FROM scratch 
 COPY --from=build /app /app
 ENTRYPOINT ["/app"]
