@@ -5,7 +5,7 @@ services:
     ports:
       - '6379:6379'
   web1:
-    restart: on-faillure
+    restart: on-failure
     build: ./web
     hostname: web1
     ports:
